@@ -169,6 +169,8 @@ def extract_text(file_path, extension):
         text = extract_text_from_docx(file_path)
     elif extension == '.doc':
         text = extract_text_from_doc(file_path)
+    elif extension == '.txt':
+        text = open(file_path, "r").read() 
     return text
 
 
