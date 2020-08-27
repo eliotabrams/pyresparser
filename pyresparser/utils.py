@@ -172,7 +172,7 @@ def extract_text(file_path, extension):
     elif extension == '.txt':
         # Hacky way to read ".txt" from S3 buckets
         # text = open(file_path, "r").read() 
-        text = ''.join(pd.read_csv(file_path,lineterminator='\n',header=None).loc[0])
+        text = ''.join(pd.read_csv(file_path,lineterminator='\n',header=None).loc[0]).replace('\r','\n')
     return text
 
 
