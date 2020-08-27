@@ -170,7 +170,9 @@ def extract_text(file_path, extension):
     elif extension == '.doc':
         text = extract_text_from_doc(file_path)
     elif extension == '.txt':
-        text = open(file_path, "r").read() 
+        # Hacky way to read ".txt" from S3 buckets
+        # text = open(file_path, "r").read() 
+        text = ''.join(pd.read_csv(file_path,lineterminator='\n',header=None).loc[0])
     return text
 
 
